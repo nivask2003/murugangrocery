@@ -176,26 +176,31 @@
     </script>
     
     <!-- Organization Schema -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Murugan Store",
-  "url": "https://murugangrocery.vercel.app/",
-  "logo": "https://murugangrocery.vercel.app/logo.png",
-  "image": "https://murugangrocery.vercel.app/store-image.jpg",
-  "telephone": "+919244390457",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "250, Erikarai St, Velmurugan Nagar, Namachivaya Nagar",
-    "addressLocality": "Madurai",
-    "addressRegion": "Tamil Nadu",
-    "postalCode": "625003",
-    "addressCountry": "IN"
-  }
-}
-</script>
-
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Murugan Store",
+          "url": "https://murugangrocery.vercel.app",
+          "logo": "https://murugangrocery.vercel.app/logo.png",
+          "telephone": "+919244390457",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "250, Erikarai St, Velmurugan Nagar, Namachivaya Nagar",
+            "addressLocality": "Madurai",
+            "addressRegion": "Tamil Nadu",
+            "postalCode": "625003",
+            "addressCountry": "IN"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919244390457",
+            "contactType": "Customer Service",
+            "areaServed": "IN",
+            "availableLanguage": ["en", "ta"]
+          }
+        }
+        </script>
         
 </head>
 <body>
@@ -394,7 +399,20 @@
         </div>
     </footer>
 
+    <!-- Welcome Message Modal -->
+    <div class="welcome-modal" id="welcomeModal">
+        <div class="welcome-modal-content">
+            <button class="welcome-close" id="welcomeClose" aria-label="Close welcome message">&times;</button>
+            <div class="welcome-icon">🛒</div>
+            <h2 class="welcome-title">Welcome to Murugan Store!</h2>
+            <p class="welcome-message">Thank you for visiting us. We're here to serve you with quality products at affordable prices. Your daily essentials are just a click away!</p>
+            <div class="welcome-buttons">
+                <a href="https://wa.me/919244390457?text=Hello%20Murugan%20Store,%20I%20would%20like%20to%20place%20an%20order" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Order on WhatsApp</a>
+                <button class="btn btn-secondary" id="welcomeContinue">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
