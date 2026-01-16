@@ -165,6 +165,61 @@ function validateForm(form) {
 }
 
 // ============================================
+// Welcome Message Modal
+// ============================================
+const welcomeModal = document.getElementById('welcomeModal');
+const welcomeClose = document.getElementById('welcomeClose');
+const welcomeContinue = document.getElementById('welcomeContinue');
+
+// Check if user has seen the welcome message (using sessionStorage for this session only)
+// Remove this check if you want it to show every time
+function showWelcomeMessage() {
+    const hasSeenWelcome = sessionStorage.getItem('hasSeenWelcome');
+    
+    if (!hasSeenWelcome && welcomeModal) {
+        // Show modal after a short delay for better UX
+        setTimeout(() => {
+            welcomeModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }, 500);
+    }
+}
+
+// Close welcome modal
+function closeWelcomeModal() {
+    if (welcomeModal) {
+        welcomeModal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
+        sessionStorage.setItem('hasSeenWelcome', 'true');
+    }
+}
+
+// Event listeners for closing the modal
+if (welcomeClose) {
+    welcomeClose.addEventListener('click', closeWelcomeModal);
+}
+
+if (welcomeContinue) {
+    welcomeContinue.addEventListener('click', closeWelcomeModal);
+}
+
+// Close modal when clicking outside
+if (welcomeModal) {
+    welcomeModal.addEventListener('click', (e) => {
+        if (e.target === welcomeModal) {
+            closeWelcomeModal();
+        }
+    });
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && welcomeModal && welcomeModal.classList.contains('show')) {
+        closeWelcomeModal();
+    }
+});
+
+// ============================================
 // Initialize on DOM Load
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -175,6 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.pageYOffset > 100) {
         header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
     }
+    
+    // Show welcome message
+    showWelcomeMessage();
     
     console.log('Murugan Store website loaded successfully!');
 });
